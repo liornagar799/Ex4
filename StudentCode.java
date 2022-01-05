@@ -56,7 +56,7 @@ public class StudentCode implements Runnable {
         GUI = new MyFrame();
         GUI.setTitle("THE GAME OF LIOR & RAZ");
         GUI.setSize(1000, 700);
-        Image icon = Toolkit.getDefaultToolkit().getImage("C:\\Users\\97252\\IdeaProjects\\Ex4\\src\\image.png");
+        Image icon = Toolkit.getDefaultToolkit().getImage("src/image.png");
         GUI.setIconImage(icon);
         GUI.mypanel.setBackground(Color.BLACK);
         GUI.mypanel.update(client);
