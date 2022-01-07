@@ -23,7 +23,7 @@ We designed a "Pokemon game" where given a weighted graph, Pokemon and agents, w
 In this class the screen is booted, as well as the thread that runs the game. In the while loop we want to run as long as the server is running and perform: the GUI implementation, loading the game data from the server, loading the Pokemons from the server, loading the agents from the server , loading the graph from the server, positioning and moving the agents efficiently which will raise the points.
 
 **implementaion:**
-The class that calls all the other classes is: StudentCode Its main and important role is to connect the server and the client and run the game.
+The class that calls all the other classes is: StudentCode Its main and important role is to connect the server and the client and run the game. Details regarding this department will appear below.
 
 ## Main Department Details: StudentCode
 **main** This class contains the primary function in which it connects to a server at IP 127.0.0.1 and port: 6666.If you are unable to make the connection the program will throw an error.
