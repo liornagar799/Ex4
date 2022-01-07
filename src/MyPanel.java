@@ -2,7 +2,6 @@ import api.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
@@ -10,20 +9,17 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 
-/**
- * myPanel class extends JPanel and implements the GUI of the game.
- *
- */
+
 public class MyPanel  extends JPanel {
-    private Client _ar;
+    private Client theClient;
     private LinkedList<Pokemon> pokemons;
     private LinkedList<Agent> agents;
     private DirectedWeightedGraph g;
     private Game game1;
 
 
-    public void update(Client ar, DirectedWeightedGraph g) {
-        this._ar = ar;
+    public void update(Client client, DirectedWeightedGraph g) {
+        this.theClient = client;
         this.agents = new LinkedList<>();
         this.g = g;
         this.pokemons = new LinkedList<>();
@@ -32,21 +28,17 @@ public class MyPanel  extends JPanel {
 
 
     public void paint(Graphics gh) {
-        int w = this.getWidth();
-        int h = this.getHeight();
-        gh.clearRect(0, 0, w, h);
+        int width = this.getWidth();
+        int high = this.getHeight();
+        gh.clearRect(0, 0, width, high);
         drawGraph(gh,g);
+        draw_gameDetails(gh);
         drawPokemons(gh);
         drawAgants(gh);
-        draw_gameDetails(gh);
-        repaint();
     }
 
 
     private void drawGraph(Graphics gh, DirectedWeightedGraph g) {
-//        String gg = _ar.getGraph();
-//        g= loadgraph(gg,g);
-        ////////////////drow graph//////////////////////////////////////
         HashMap<Integer, Double> get_X = new HashMap<>(this.g.nodeSize());
         HashMap<Integer, Double> get_Y = new HashMap<>(this.g.nodeSize());
         Graphics2D graphics = (Graphics2D) gh;
@@ -97,7 +89,7 @@ public class MyPanel  extends JPanel {
 
         }}
 
-
+   // make the Proportion on the gui
     private void Normalization(HashMap<Integer, Double> normalize, double SRCoutput, double DESToutput) {
         double min = Double.MAX_VALUE,max = Double.MIN_VALUE;
         for (Integer key : normalize.keySet()) {
@@ -110,7 +102,7 @@ public class MyPanel  extends JPanel {
         normalize.replaceAll((k, v) -> SRCoutput + current * (normalize.get(k) - finalMin));
 
     }
-
+  // make the Proportion on the elments( agents and pokemons)
     private void Norm(HashMap<Integer, Double> normalize,HashMap<Integer, Double> cur, double SRCoutput, double DESToutput) {
         double min = Double.MAX_VALUE,max = Double.MIN_VALUE;
         for (Integer key : normalize.keySet()) {
@@ -125,9 +117,8 @@ public class MyPanel  extends JPanel {
     }
 
     private void drawPokemons(Graphics gh) {
-        String fs = _ar.getPokemons();
+        String fs = theClient.getPokemons();
         pokemons=loadPokemons(fs,g,pokemons);
-/////////////////////////////////////////////////////////////////////
         HashMap<Integer, Double> get_X = new HashMap<>(this.g.nodeSize());
         HashMap<Integer, Double> get_Y = new HashMap<>(this.g.nodeSize());
         Iterator<NodeData> Nodes = this.g.nodeIter();
@@ -144,8 +135,8 @@ public class MyPanel  extends JPanel {
         while (iter.hasNext()) {
             Pokemon f = iter.next();
             GeoLocation c = f.getLocation();
-            get_X_pok.put(f.getId(), c.x()); /// to check///
-            get_Y_pok.put(f.getId(), c.y());/// to check///
+            get_X_pok.put(f.getId(), c.x());
+            get_Y_pok.put(f.getId(), c.y());
         }
         Norm(get_X,get_X_pok, 70, this.getWidth() - 70);
         Norm(get_Y,get_Y_pok, 70, this.getHeight() - 70);
@@ -153,12 +144,13 @@ public class MyPanel  extends JPanel {
         while(itr.hasNext()) {
             Pokemon f = itr.next();
             int key =f.getId();
+            double v = f.getValue();
             int x = get_X_pok.get(key).intValue();
             int y = get_Y_pok.get(key).intValue();
             gh.setColor(Color.YELLOW);
             gh.fillOval(x, y, 7 * 2, 7 * 2);
-            gh.setColor(Color.BLACK);
-            gh.drawString("" + key, x, y - 10);
+            gh.setColor(Color.YELLOW);
+            gh.drawString("" +v, x, y - 10);
 
         }
     }
@@ -166,9 +158,8 @@ public class MyPanel  extends JPanel {
 
 
     private void drawAgants(Graphics gh)  {
-        String rs = _ar.getAgents();
+        String rs = theClient.getAgents();
         agents=loadAgents(rs,g, agents);
-////////////////////////////////////////////////////////////////
         HashMap<Integer, Double> get_X = new HashMap<>(this.g.nodeSize());
         HashMap<Integer, Double> get_Y = new HashMap<>(this.g.nodeSize());
         Iterator<NodeData> Nodes = this.g.nodeIter();
@@ -185,8 +176,8 @@ public class MyPanel  extends JPanel {
         while (iter.hasNext()) {
             Agent f = iter.next();
             GeoLocation c = f.getPos();
-            get_X_agents.put(f.getId(), c.x()); /// to check///
-            get_Y_agents.put(f.getId(), c.y());/// to check///
+            get_X_agents.put(f.getId(), c.x());
+            get_Y_agents.put(f.getId(), c.y());
         }
         Norm(get_X,get_X_agents, 70, this.getWidth() - 70);
         Norm(get_Y,get_Y_agents, 70, this.getHeight() - 70);
@@ -198,7 +189,7 @@ public class MyPanel  extends JPanel {
             int y = get_Y_agents.get(key).intValue();
             gh.setColor(Color.green);
             gh.fillOval(x, y, 7 * 2, 7 * 2);
-            gh.setColor(Color.BLACK);
+            gh.setColor(Color.green);
             gh.drawString("" + key, x, y - 10);
 
         }
@@ -209,14 +200,13 @@ public class MyPanel  extends JPanel {
         gh.setColor(Color.WHITE);
         Font font = gh.getFont().deriveFont( 14.0f );
         gh.setFont( font );
-        String ss = (_ar. timeToEnd());
-        if (ss==null ||!ss.equals("-1")){
+        String ss = (theClient. timeToEnd());
+        if (ss!=null ||!ss.equals("-1")){
             long g = Long.parseLong(ss);
             int t= (int) (g/1000);
-        gh.drawString("time left: "+ t, 10,45);}
-        String gameDetails = _ar.getInfo();
+        gh.drawString("the time left: "+ t, 10,45);}
+        String gameDetails = theClient.getInfo();
         game1 = loadgame(gameDetails, game1);
-            ////////////////////////////////////////////////////////////////////////
             gh.drawString("Level: " + game1.getLeavel(), 200, 45);
             int numOf_pokemons = game1.getNum_of_pokemons();
             int numOf_agents = game1.getagents();
@@ -231,7 +221,6 @@ public class MyPanel  extends JPanel {
 
 
     public static LinkedList<Agent> loadAgents(String  agentsStr, DirectedWeightedGraph g, LinkedList<Agent> agents) {
-//        LinkedList<Agent> a= new LinkedList<Agent>();
         JSONObject ob;
         if (agentsStr==null||!agentsStr.contains("Agents")){
             return agents;
@@ -265,7 +254,6 @@ public class MyPanel  extends JPanel {
             }
         } catch (JSONException e){
             e.printStackTrace();
-            System.out.println("___ "+agentsStr);
         }
 
         return agents;
@@ -298,7 +286,6 @@ public class MyPanel  extends JPanel {
             }
         } catch (JSONException e){
             e.printStackTrace();
-            System.out.println("___ "+pokemonsStr);
         }
         return pokemons;
     }
@@ -323,14 +310,13 @@ public class MyPanel  extends JPanel {
             The_Game.setgrade(grad);
             int id1 = game.getInt("id");
             The_Game.setId(id1);
-            String gr = game.getString("graph");
-            The_Game.setgraph(gr);
+            int level = game.getInt("game_level");
+            The_Game.setGame_level(level);
             int age = game.getInt("agents");
             The_Game.setagents(age);
             game1=The_Game;
         } catch (JSONException e){
             e.printStackTrace();
-            System.out.println("___ "+ InfoStr);
         }
 
         return game1;
