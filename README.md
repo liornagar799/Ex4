@@ -52,7 +52,7 @@ In order to implement the graphical interface we created two departments:
  
 **MyFrame:** This class initializes the MyPanel class that will be specified in the following setting.
  
-**MyPanel**:This class implements the GUI, it updates the following drawings: the drawing of the graph, the drawing of the agents, the drawing of the Pokemon, the drawing of the game data.
+**MyPanel**:This class implements the GUI, it updates the following drawings: the drawing of the graph, the drawing of the agents, the drawing of the Pokemon, the drawing of the game data. The yellow circles mark the Pokemon and the green circles mark the agents
 
  ###################################
 ##  Run:
