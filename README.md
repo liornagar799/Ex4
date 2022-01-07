@@ -1,3 +1,4 @@
+![Test Image 1](image.png)
 # Ex4
 Our goal is to maximize the total amount of weights of the captured Pokemon.
 # Witing language:
