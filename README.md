@@ -101,4 +101,5 @@ case 14:{"GameServer":{"pokemons":3,"is_logged_in":false,"moves":285,"grade":173
 case 15:{"GameServer":{"pokemons":4,"is_logged_in":false,"moves":579,"grade":300,"game_level":15,"max_user_level":-1,"id":0,"graph":"data/A3","agents":1}}
 
 # UML
+Click on the image if you want to enlarge the image.
 ![Test Image 2](https://github.com/liornagar799/Ex4/blob/main/UML/Ex4-UML.png)
