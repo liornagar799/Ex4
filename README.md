@@ -1,4 +1,4 @@
-                          ![Test Image 1](https://github.com/liornagar799/Ex4/blob/main/src/image.png)
+![Test Image 1](https://github.com/liornagar799/Ex4/blob/main/src/image.png)
 # Ex4
 Our goal is to maximize the total amount of weights of the captured Pokemon.
 # Witing language:
