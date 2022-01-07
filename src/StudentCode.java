@@ -14,7 +14,7 @@ import java.util.LinkedList;
 
 public class StudentCode implements Runnable {
     private static MyFrame GUI;
-    private static long dt = 365;
+    private static long time = 365;
     private static Client client;
     private static LinkedList<Pokemon> pokemons;
     private static DirectedWeightedGraph g;
@@ -22,50 +22,61 @@ public class StudentCode implements Runnable {
     private static LinkedList<Agent> agents;
 
     public static void main(String[] args) {
-
         client = new Client();
         pokemons= new LinkedList<>();
         agents= new LinkedList<>();
         g =new DirectedWeightedGraphImpl();
         thegame = new Game();
-        Thread clien = new Thread (new StudentCode());
+        Thread c = new Thread (new StudentCode());
 
+        //try to start Connection to the server
         try {
             client.startConnection("127.0.0.1", 6666);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        // all the load form json str
         String InfoStr = client.getInfo();
+        //load the game
         thegame= loadgame(InfoStr);
         String graphStr = client.getGraph();
+        //load the graph
         g=loadgraph(graphStr);
         System.out.println(graphStr);
         String agentsStr = client.getAgents();
         System.out.println(agentsStr);
         String pokemonsStr = client.getPokemons();
+        //load the pokemons
         pokemons=loadPokemons(pokemonsStr,g);
         System.out.println(pokemonsStr);
+        // add the agants to the game
         addAgentToTheGame(pokemons,thegame,client);
         agentsStr = client.getAgents();
+        //load the agants
         agents=loadAgents(agentsStr,g);
-        /////////////////////////////////////
+
+        /////////////////start the game////////////////////
         String isRunningStr = client.isRunning();
         System.out.println(isRunningStr);
         client.start();
+        //new Gui
         GUI = new MyFrame();
+        //set a title
         GUI.setTitle("THE GAME OF LIOR & RAZ");
         GUI.setSize(1000, 700);
+        //set the image of icon
         Image icon = Toolkit.getDefaultToolkit().getImage("C:\\Users\\97252\\IdeaProjects\\Ex4\\src\\image.png");
         GUI.setIconImage(icon);
         GUI.mypanel.setBackground(Color.BLACK);
         GUI.mypanel.update(client,g);
+        //make a button
         JButton stop = new JButton("STOP THE GAME");
         GUI.mypanel.add(stop);
         stop.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                //the button stop the game and close the gui
                 GUI.mypanel.setVisible(false);
                 GUI.setVisible(false);
                 client.stop();
@@ -73,127 +84,67 @@ public class StudentCode implements Runnable {
 
             }
         });
+        //make the gui visibile
         GUI.setVisible(true);
         GUI.mypanel.setVisible(true);
-        int ind=0;
-        //||client.timeToEnd()==null||!client.timeToEnd().equals("-1")
-//        String s=client.timeToEnd();
-//          while (client.isRunning().equals("true")){
-//        while (!client.timeToEnd().equals("-1")) {
+        //count the time
+        int index=0;
+        //start the game if client.isRunning()
             while (client.isRunning().equals("true")) {
-                moveAgants(client);
+                //function that moves all the agants
+                moveAllTheAgants(client);
+                ////restrictive the time we repaint the gui
                 try {
-                    if (ind %4== 0) {
+                    if (index %4 == 0) {
                         GUI.repaint();
                     }
-                    Thread.sleep(dt);
-                    ind++;
+                    //restrictive the time we call the client
+                    Thread.sleep(time);
+                    index++;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                if(client.timeToEnd()==null){
-                   System.exit(0);
+                //if the game is stop close the program
+                if (client.timeToEnd() == null) {
+                    System.exit(0);
                 }
-//                moveAgants(client);
-//                System.out.println(client.getAgents());
-//                System.out.println(client.timeToEnd());
-            //}
-//            s=client.timeToEnd();
-//        while (client.isRunning().equals("true")) {
-//            moveAgants(client);
-//            try {
-//                if (ind % 5 == 0) {
-//                    GUI.repaint();
-//                }
-//                Thread.sleep(dt);
-//                ind++;
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-////            System.out.println(client.getAgents());
-////            System.out.println(client.timeToEnd());
-//        }
-
-//              while (client.isRunning().equals("true")) {
-//                  moveAgants(client);
-//                  try {
-//                      if (ind % 1 == 0) {
-//                          GUI.repaint();
-//                      }
-//                      Thread.sleep(dt);
-//                      ind++;
-//                  } catch (Exception e) {
-//                      e.printStackTrace();
-//                  }
-//                  System.out.println(client.getAgents());
-//                  System.out.println(client.timeToEnd());
-              }              }
-    //    }//}
-        ///////////////////////////////////////////
-//        while (!client.timeToEnd().equals("-1")){
-//        while (client.isRunning().equals("true")){// && !client.timeToEnd().equals("-1")) {
-////            moveAgants(client);
-////            try {
-////                if (ind % 100 == 0) {
-////                    GUI.repaint();
-////                }
-////                Thread.sleep(dt);
-////                ind++;
-////            } catch (Exception e) {
-////                e.printStackTrace();
-////            }
-//        while (client.isRunning().equals("true")) {
-//            client.move();
-//            System.out.println(client.getAgents());
-//            System.out.println(client.timeToEnd());
-//        }}
-//            Scanner keyboard = new Scanner(System.in);
-//            System.out.println("enter the next dest: ");
-//            for (int i=0; i<agents.size(); i++) {
-//                int next = mod((agents.get(i).getSrc() - 1), g.nodeSize());
-//                client.chooseNextEdge("{\"agent_id\":0, \"next_node_id\": " + next + "}");
-//                client.move();
-//                GUI.repaint();
-//            }
-////            int next = mod((a.getSrc() - 1),g.nodes.size());
-////            System.out.println(client.getAgents());
-////            System.out.println(client.timeToEnd());
-//        }
-//        }
-//    public static int mod(int a, int n){
-//        return ((a%n)+n)%n;
-//    }
-//
-    synchronized private static void moveAgants(Client client) {
+            }
+         //if the game is stop close the program
+        System.exit(0);
+    }
+    synchronized private static void moveAllTheAgants(Client client) {
+        //load the agants from the client
         agents= loadAgents(client.getAgents(), g);
+        //load the pokemons from the client
         pokemons = loadPokemons(client.getPokemons(), g);
         DirectedWeightedGraphAlgorithms ga = new DirectedWeightedGraphAlgorithmsImpl();
         ga.init(g);
+        // the loop pass all the agants and tell them where to go
         for (int i = 0; i < agents.size(); i++) {
-            Agent ag = agents.get(i);
-            int id = ag.getId();
-            int dest = ag.getDest();
-            double v = ag.getValue();
-            int next = ag.findNearPokpath(pokemons, ga);
-            if ((dest == -1) && (ag.on_node())) {
-//                 int next = ag.findNearPokpath(pokemons, ga);
-                //'{"agent_id":0, "next_node_id":1}'
+            Agent agent = agents.get(i);
+            int id = agent.getId();
+            int dest = agent.getDest();
+            //find the next node that the agent need to go
+            int next = agent.findNearPokpath(pokemons, ga);
+            //send to the client where the agant need to go just if the agant on a node , not moving
+            if ((dest == -1) && (agent.on_node())) {
                 String s = "{\"agent_id\":" + id + ", \"next_node_id\":" + next + "}";
-                System.out.println( s );
-                System.out.println(ag.getDest());
                 client.chooseNextEdge(s);
-                System.out.println( s );
+
             }
-//            client.move();
         }
+        //after all the agants know what to to we fall the client to to a move
         client.move();
     }
 
+    //The function will divide the String according to the data contained in it, turn it into numeric data and initialize the agents.
     public static LinkedList<Agent> loadAgents(String  agentsStr, DirectedWeightedGraph g) {
+        //if the str agentsStr in not good
         if (agentsStr==null ||!agentsStr.contains("Agents")){
             return agents;
         }
         try {
+            //try to load the agants
             agents= new LinkedList<Agent>();
             JSONObject ob = new JSONObject(agentsStr);
             JSONArray agens = ob.getJSONArray("Agents");
@@ -226,12 +177,14 @@ public class StudentCode implements Runnable {
 
         return agents;
     }
-
+   //The function will divide the String according to the data contained in it, turn it into numeric data and initialize the pokemons.
     public static LinkedList<Pokemon> loadPokemons(String  pokemonsStr, DirectedWeightedGraph g) {
+        //if the str pokemonsStr in not good
         if (pokemonsStr==null ||!pokemonsStr.contains("Pokemons")){
             return pokemons;
         }
         try {
+            //try to load the pokemons
             pokemons = new LinkedList<Pokemon>();
             JSONObject obj = new JSONObject(pokemonsStr);
             JSONArray poks = obj.getJSONArray("Pokemons");
@@ -256,12 +209,14 @@ public class StudentCode implements Runnable {
         }
         return pokemons;
     }
-
+//The function will divide the String according to the data contained in it, turn it into numeric data and initialize the graph.
     public static DirectedWeightedGraph loadgraph(String  graphStr) {
+        //if the str graphStr in not good
         if(graphStr==null ||!graphStr.contains("Edges")){
             return g;
         }
         try {
+            //try to load the graph
             g= new DirectedWeightedGraphImpl();
             JSONObject obje = new JSONObject(graphStr);
             JSONArray edges= obje.getJSONArray("Edges");
@@ -292,11 +247,14 @@ public class StudentCode implements Runnable {
         return g;
     }
 
+    //The function will divide the String according to the data contained in it, turn it into numeric data and initialize the game.
     public static Game loadgame(String  InfoStr) {
+        //if the str InfoStr in not good
         if(InfoStr==null||!InfoStr.contains("GameServer")){
             return thegame;
         }
         try {
+            //try to load the thegame
             thegame = new Game();
             JSONObject object = new JSONObject(InfoStr);
             Game The_Game = new Game();
@@ -309,8 +267,8 @@ public class StudentCode implements Runnable {
             The_Game.setgrade(grad);
             int id1 = game.getInt("id");
             The_Game.setId(id1);
-            String gr = game.getString("graph");
-            The_Game.setgraph(gr);
+            int level = game.getInt("game_level");
+            The_Game.setGame_level(level);
             int age = game.getInt("agents");
             The_Game.setagents(age);
             thegame=The_Game;
@@ -321,12 +279,17 @@ public class StudentCode implements Runnable {
         return thegame;
     }
 
+    //find the bust plave to set the agant on the graph
     private static void addAgentToTheGame(LinkedList<Pokemon> pokemons, Game thegame, Client client){
-        Comparator<Pokemon> compare = (Pokemon ONE, Pokemon TWO) -> Double.compare(ONE.getValue(), TWO.getValue());
+        // sort all the pokemons according to the value
+        Comparator<Pokemon> compare = (Pokemon first, Pokemon second) -> Double.compare(first.getValue(), second.getValue());
+        //do the sort
         pokemons.sort(compare);
         int zz=0;
+        // pass all the pos of the pokemons
         for (int j=1; j<=thegame.getagents(); j++){
             if(zz<=pokemons.size()) {
+                //pot the egent near the pok pos
                 int curr = pokemons.get(zz).get_edge().getSrc();
                 client.addAgent("{\"id\":" + curr + "}");
                 zz++;
