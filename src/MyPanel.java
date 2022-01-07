@@ -208,13 +208,13 @@ public class MyPanel  extends JPanel {
         String games = theClient.getInfo();
         game1 = loadgame(games, game1);
             gh.drawString("Level: " + game1.getLeavel(), 200, 45);
-            int numOf_pokemons = game1.getNum_of_pokemons();
-            int numOf_agents = game1.getagents();
-            int numOf_moves = game1.getmoves();
+            int numOfpokemons = game1.getNum_of_pokemons();
+            int numOfagents = game1.getagents();
+            int numOfmoves = game1.getmoves();
             int grade = game1.getgrade();
-            gh.drawString("number of pokemons: " + numOf_pokemons, 300, 45);
-            gh.drawString("number of agents: " + numOf_agents, 500, 45);
-            gh.drawString("number of moves: " + numOf_moves, 700, 45);
+            gh.drawString("number of pokemons: " + numOfpokemons, 300, 45);
+            gh.drawString("number of agents: " + numOfagents, 500, 45);
+            gh.drawString("number of moves: " + numOfmoves, 700, 45);
             gh.drawString("grade: " + grade, 900, 45);
         }
 
