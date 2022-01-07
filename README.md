@@ -66,8 +66,6 @@ case = number of level 0-15
 And records:
 java -jar Ex4_Server_v0.0.jar case 
  
-
- ###################################
 ##  Results:
 case 0: {"GameServer":{"pokemons":1,"is_logged_in":false,"moves":287,"grade":115,"game_level":0,"max_user_level":-1,"id":0,"graph":"data/A0","agents":1}}
 
