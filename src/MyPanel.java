@@ -32,9 +32,9 @@ public class MyPanel  extends JPanel {
         int high = this.getHeight();
         gh.clearRect(0, 0, width, high);
         drawGraph(gh,g);
-        draw_gameDetails(gh);
+        draw_game(gh);
         drawPokemons(gh);
-        drawAgants(gh);
+        drawAgents(gh);
     }
 
 
@@ -117,8 +117,8 @@ public class MyPanel  extends JPanel {
     }
 
     private void drawPokemons(Graphics gh) {
-        String fs = theClient.getPokemons();
-        pokemons=loadPokemons(fs,g,pokemons);
+        String pokstr = theClient.getPokemons();
+        pokemons=loadPokemons(pokstr,g,pokemons);
         HashMap<Integer, Double> get_X = new HashMap<>(this.g.nodeSize());
         HashMap<Integer, Double> get_Y = new HashMap<>(this.g.nodeSize());
         Iterator<NodeData> Nodes = this.g.nodeIter();
@@ -157,9 +157,9 @@ public class MyPanel  extends JPanel {
 
 
 
-    private void drawAgants(Graphics gh)  {
-        String rs = theClient.getAgents();
-        agents=loadAgents(rs,g, agents);
+    private void drawAgents(Graphics gh)  {
+        String agaStr = theClient.getAgents();
+        agents=loadAgents(agastr,g, agents);
         HashMap<Integer, Double> get_X = new HashMap<>(this.g.nodeSize());
         HashMap<Integer, Double> get_Y = new HashMap<>(this.g.nodeSize());
         Iterator<NodeData> Nodes = this.g.nodeIter();
@@ -196,7 +196,7 @@ public class MyPanel  extends JPanel {
     }
 
 
-    private void draw_gameDetails (Graphics gh) {
+    private void draw_game (Graphics gh) {
         gh.setColor(Color.WHITE);
         Font font = gh.getFont().deriveFont( 14.0f );
         gh.setFont( font );
@@ -205,8 +205,8 @@ public class MyPanel  extends JPanel {
             long g = Long.parseLong(ss);
             int t= (int) (g/1000);
         gh.drawString("the time left: "+ t, 10,45);}
-        String gameDetails = theClient.getInfo();
-        game1 = loadgame(gameDetails, game1);
+        String games = theClient.getInfo();
+        game1 = loadgame(games, game1);
             gh.drawString("Level: " + game1.getLeavel(), 200, 45);
             int numOf_pokemons = game1.getNum_of_pokemons();
             int numOf_agents = game1.getagents();
