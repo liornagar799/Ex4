@@ -159,7 +159,7 @@ public class MyPanel  extends JPanel {
 
     private void drawAgents(Graphics gh)  {
         String agaStr = theClient.getAgents();
-        agents=loadAgents(agastr,g, agents);
+        agents=loadAgents(agaStr,g, agents);
         HashMap<Integer, Double> get_X = new HashMap<>(this.g.nodeSize());
         HashMap<Integer, Double> get_Y = new HashMap<>(this.g.nodeSize());
         Iterator<NodeData> Nodes = this.g.nodeIter();
