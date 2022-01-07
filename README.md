@@ -37,7 +37,7 @@ The function will receive the following data from the server in the form of a St
 **loadgame** The function will divide the String according to the data contained in it, turn it into numerical data and initialize the game.
 
 The function will add the data using the **addAgentToTheGame** function which will sort the Pokemon using the Comparator according to the value of the Pokemon- the agent will prefer a perception of the highest value Pokemon.
-After all the loads we will start the client's game in front of the server and it will be activated by the while loop which will run the game for us as long as we get from the server that the game is running.
+After all the loads we will start the client's game in front of the server and it will be activated by the while loop that you will run the game for us as long as we get from the server that the game is running and move the agents using the **moveAgants** function
 When the time runs out and we get null we want to exit the game Also, we want to exit if the user presses the STOP THE GAME button.
 
  
