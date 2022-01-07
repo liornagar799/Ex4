@@ -104,6 +104,8 @@ public class StudentCode implements Runnable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                System.out.println(client.getAgents());
+                System.out.println(client.timeToEnd());
                 //if the game is stop close the program
                 if (client.timeToEnd() == null) {
                     System.exit(0);
