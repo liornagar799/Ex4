@@ -45,13 +45,14 @@ When the time runs out and we get null we want to exit the game Also, we want to
 ## Performance
 All performance was performed using the various classes we listed, as well as the GUI.
 Attached to the program are testers designed to verify implementation.
-in src we have 2 class of testes:
+
+**in src we have 2 class of testes:**
  
 Game_test - check all the Functions in Game class.
  
 Pokemon_test - check all the Functions in Pokemon class.
 
-in api we have 2 class of testes:
+**in api we have 2 class of testes:**
  
 DirectedWeightedGraphAlgorithmsImpl_test - check all the Functions in DirectedWeightedGraphAlgorithmsImpl class.
  
