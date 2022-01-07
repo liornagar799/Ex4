@@ -9,10 +9,15 @@ We designed a "Pokemon game" where given a weighted graph, Pokemon and agents, w
 ## Planning of the main departments:
 
 **api** This folder contains our implementation of the graph and the algorithms of the graph from the EX2 task.
+
 **Agent** This class contains all the agent's data.
+
 **Pokemon** This class contains all the pokemon's data.
+
 **Client** This is a class that we got and it makes the connection to the server and thus we get the server and need to update them in the program.After the server is running a client can connect to it (play with it)
+
 **Game** This class contains all the game's data.
+
 **StudentCode**This class contains the primary function in which it connects to a server at IP 127.0.0.1 and port: 6666.
 In this class the screen is booted, as well as the thread that runs the game. In the while loop we want to run as long as the server is running and perform: the GUI implementation, loading the game data from the server, loading the Pokemon from the server, loading the graph from the server, positioning and moving the agents efficiently which will raise the points, loading the agents from the server.
 
