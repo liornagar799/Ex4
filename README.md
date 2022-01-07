@@ -1,4 +1,4 @@
-![Test Image 1](https://github.com/liornagar799/Ex4/blob/main/src/image.png)
+                          ![Test Image 1](https://github.com/liornagar799/Ex4/blob/main/src/image.png)
 # Ex4
 Our goal is to maximize the total amount of weights of the captured Pokemon.
 # Witing language:
@@ -19,21 +19,32 @@ We designed a "Pokemon game" where given a weighted graph, Pokemon and agents, w
 
 **Game** This class contains all the game's data.
 
-**StudentCode**This class contains the primary function in which it connects to a server at IP 127.0.0.1 and port: 6666.
-In this class the screen is booted, as well as the thread that runs the game. In the while loop we want to run as long as the server is running and perform: the GUI implementation, loading the game data from the server, loading the Pokemon from the server, loading the graph from the server, positioning and moving the agents efficiently which will raise the points, loading the agents from the server.
+**StudentCode**
+In this class the screen is booted, as well as the thread that runs the game. In the while loop we want to run as long as the server is running and perform: the GUI implementation, loading the game data from the server, loading the Pokemons from the server, loading the agents from the server , loading the graph from the server, positioning and moving the agents efficiently which will raise the points.
 
 **implementaion:**
 The class that calls all the other classes is: StudentCode Its main and important role is to connect the server and the client and run the game.
 
-## algorithems:
+## Main Department Details: StudentCode
+**main** This class contains the primary function in which it connects to a server at IP 127.0.0.1 and port: 6666.If you are unable to make the connection the program will throw an error.
+The function will receive the following data from the server in the form of a String: Info, Graph, getAgents, getPokemons, isRunning and will send the data to the following functions:
+**loadAgents** The function will divide the String according to the data contained in it, turn it into numeric data and initialize the agent.
+
+**loadPokemons** The function will divide the String according to the data contained in it, turn it into numeric data and initialize the Pokemon.
+
+**loadgraph** The function will divide the String according to the data contained in it, turn it into numeric data and initialize the graph.
+
+**loadgame** The function will divide the String according to the data contained in it, turn it into numerical data and initialize the game.
+
+The function will add the data using the **addAgentToTheGame** function which will sort the Pokemon using the Comparator according to the value of the Pokemon- the agent will prefer a perception of the highest value Pokemon.
+After all the loads we will start the client's game in front of the server and it will be activated by the while loop which will run the game for us as long as we get from the server that the game is running.
+When the time runs out and we get null we want to exit the game Also, we want to exit if the user presses the STOP THE GAME button.
 
  
 
  
  ## Performence
- We tested the program we built with several different sizes of graphs.
- And compare it to the performance versus the same work in java.
- All comparisons can be found in the wiki file.
+
  
 ##  GUI:
 In order to implement the graphical interface we created two departments:
