@@ -51,8 +51,6 @@ public class Pokemon {
 
     
 
-    public String toString() {return "F:{v="+value+", t="+type+"}";}
-
     public EdgeData get_edge() {
         return edge;
     }
