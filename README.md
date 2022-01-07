@@ -42,10 +42,11 @@ When the time runs out and we get null we want to exit the game Also, we want to
 
  
 
- 
- ## Performence
-
- 
+ #################################
+## Performance
+All performance was performed using the various classes we listed, as well as the GUI.
+Attached to the program are testers designed to verify implementation.
+ ###################################
 ##  GUI:
 In order to implement the graphical interface we created two departments:
  
