@@ -2,16 +2,17 @@
 Our goal is to maximize the total amount of weights of the captured Pokemon.
 # Witing language:
 JAVA
-# introduction:
+# Introduction:
 In this assignment, we were asked to implement the main tools learned during the course.
 We designed a "Pokemon game" where given a weighted graph, Pokemon and agents, we positioned the agents so they could catch as many Pokemon as possible. The Pokemon are placed at the edges of the graph, therefore, the agent should take the appropriate edge to catch the Pokemon. Our goal is to maximize the total amount of weights of the captured Pokemon. In addition, it is forbidden to exceed the maximum number of server readings allowed per second - a maximum of 10.
 
 ## Planning of the main departments:
 
-**Node** represents the set of operations applicable on a node in a weighted graph.
-
-**DiGraph**This class implement #GraphInterface interface:The interface has a road-system or communication network in mind and should support a large number of nodes (over 100,000).
-The GraphInterface class represents a Directional Weighted Graph,with effective representation.
+**api** This folder contains our implementation of the graph and the algorithms of the graph from the EX2 task.
+**Agent**This class contains all the agent's data.
+**Pokemon**This class contains all the pokemon's data.
+**Client**This is a class that we got and it makes the connection to the server and thus we get the server and need to update them in the program.After the server is running a client can connect to it (play with it)
+**Game**This class contains all the game's data.
 **implementaion:**
 We implemented the graph for the nodes and Edges we did using the data structure: dictionary.
 
@@ -35,3 +36,9 @@ The functions we implement:
  We tested the program we built with several different sizes of graphs.
  And compare it to the performance versus the same work in java.
  All comparisons can be found in the wiki file.
+ 
+##  GUI:
+ In order to implement the graphical interface we created two departments:
+ **MyFrame:** This class initializes the MyPanel class that will be specified in the following setting.
+ **MyPanel**:This class implements the GUI, it updates the following drawings: the drawing of the graph, the drawing of the agents, the drawing of the Pokemon, the drawing of the game data.
+
