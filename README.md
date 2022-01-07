@@ -57,6 +57,15 @@ In order to implement the graphical interface we created two departments:
  ###################################
 ##  Run:
 
+Download all the files in the git to your computer
+ 
+Open CMD line 
+
+case = number of level 0-15
+ 
+And records:
+java -jar Ex4_Server_v0.0.jar case 
+ 
 
  ###################################
 ##  Results:
