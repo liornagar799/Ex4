@@ -56,15 +56,15 @@ public class Pokemon {
     public EdgeData get_edge() {
         return edge;
     }
-
+    //Function that change the id of the pokemon
     public void set_Id(int e) {
         this.id = e;
     }
-    //Function that returns the position
+    //Function that returns the position of the pokemon
     public GeoLocation getLocation() {
         return pos;
     }
-     //Function that returns the id
+    //Function that returns the id of the pokemon
     public int getId() {
         return this.id;
     }
