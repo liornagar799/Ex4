@@ -61,19 +61,34 @@ In order to implement the graphical interface we created two departments:
  ###################################
 ##  Results:
 case 0: {"GameServer":{"pokemons":1,"is_logged_in":false,"moves":287,"grade":115,"game_level":0,"max_user_level":-1,"id":0,"graph":"data/A0","agents":1}}
+
 case 1:{"GameServer":{"pokemons":2,"is_logged_in":false,"moves":580,"grade":387,"game_level":1,"max_user_level":-1,"id":0,"graph":"data/A0","agents":1}}
+
 case 2:{"GameServer":{"pokemons":3,"is_logged_in":false,"moves":288,"grade":236,"game_level":2,"max_user_level":-1,"id":0,"graph":"data/A0","agents":1}}
+
 case 3:{"GameServer":{"pokemons":4,"is_logged_in":false,"moves":580,"grade":755,"game_level":3,"max_user_level":-1,"id":0,"graph":"data/A0","agents":1}}
+
 case 4:{"GameServer":{"pokemons":5,"is_logged_in":false,"moves":287,"grade":182,"game_level":4,"max_user_level":-1,"id":0,"graph":"data/A1","agents":1}}
+
 case 5:{"GameServer":{"pokemons":6,"is_logged_in":false,"moves":580,"grade":472,"game_level":5,"max_user_level":-1,"id":0,"graph":"data/A1","agents":1}}
+
 case 6:{"GameServer":{"pokemons":1,"is_logged_in":false,"moves":287,"grade":79,"game_level":6,"max_user_level":-1,"id":0,"graph":"data/A1","agents":1}}
+
 case 7:{"GameServer":{"pokemons":2,"is_logged_in":false,"moves":581,"grade":269,"game_level":7,"max_user_level":-1,"id":0,"graph":"data/A1","agents":1}}
+
 case 8:{"GameServer":{"pokemons":3,"is_logged_in":false,"moves":288,"grade":110,"game_level":8,"max_user_level":-1,"id":0,"graph":"data/A2","agents":1}}
+
 case 9:{"GameServer":{"pokemons":4,"is_logged_in":false,"moves":580,"grade":364,"game_level":9,"max_user_level":-1,"id":0,"graph":"data/A2","agents":1}}
+
 case 10:{"GameServer":{"pokemons":5,"is_logged_in":false,"moves":288,"grade":59,"game_level":10,"max_user_level":-1,"id":0,"graph":"data/A2","agents":1}}
+
 case 11:{"GameServer":{"pokemons":6,"is_logged_in":false,"moves":578,"grade":1390,"game_level":11,"max_user_level":-1,"id":0,"graph":"data/A2","agents":3}}
+
 case 12:{"GameServer":{"pokemons":1,"is_logged_in":false,"moves":287,"grade":40,"game_level":12,"max_user_level":-1,"id":0,"graph":"data/A3","agents":1}}
+
 case 13:{"GameServer":{"pokemons":2,"is_logged_in":false,"moves":579,"grade":269,"game_level":13,"max_user_level":-1,"id":0,"graph":"data/A3","agents":2}}
+
 case 14:{"GameServer":{"pokemons":3,"is_logged_in":false,"moves":285,"grade":173,"game_level":14,"max_user_level":-1,"id":0,"graph":"data/A3","agents":3}}
+
 case 15:{"GameServer":{"pokemons":4,"is_logged_in":false,"moves":579,"grade":300,"game_level":15,"max_user_level":-1,"id":0,"graph":"data/A3","agents":1}}
 
