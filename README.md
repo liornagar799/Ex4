@@ -1,6 +1,6 @@
 # Ex4
 Our goal is to maximize the total amount of weights of the captured Pokemon.
-#Writing language:# JAVA
+# Witing language: JAVA
 # introduction:
 In this assignment, we were asked to implement the main tools learned during the course.
 We designed a "Pokemon game" where given a weighted graph, Pokemon and agents, we positioned the agents so they could catch as many Pokemon as possible. The Pokemon are placed at the edges of the graph, therefore, the agent should take the appropriate edge to catch the Pokemon. Our goal is to maximize the total amount of weights of the captured Pokemon. In addition, it is forbidden to exceed the maximum number of server readings allowed per second - a maximum of 10.
