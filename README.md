@@ -42,12 +42,21 @@ After all the loads we will start the client's game in front of the server and i
 When the time runs out and we get null we want to exit the game Also, we want to exit if the user presses the STOP THE GAME button.
 
  
-
- #################################
 ## Performance
 All performance was performed using the various classes we listed, as well as the GUI.
 Attached to the program are testers designed to verify implementation.
- ###################################
+in src we have 2 class of testes:
+ 
+Game_test - check all the Functions in Game class.
+ 
+Pokemon_test - check all the Functions in Pokemon class.
+
+in api we have 2 class of testes:
+ 
+DirectedWeightedGraphAlgorithmsImpl_test - check all the Functions in DirectedWeightedGraphAlgorithmsImpl class.
+ 
+DirectedWeightedGraphImpl_test- check all the Functions inDirectedWeightedGraphImpl class.
+
 ##  GUI:
 In order to implement the graphical interface we created two departments:
  
@@ -55,7 +64,6 @@ In order to implement the graphical interface we created two departments:
  
 **MyPanel**:This class implements the GUI, it updates the following drawings: the drawing of the graph, the drawing of the agents, the drawing of the Pokemon, the drawing of the game data. The yellow circles mark the Pokemon and the green circles mark the agents
 
- ###################################
 ##  Run:
 
 Download all the files in the git to your computer
