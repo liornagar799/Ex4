@@ -77,7 +77,7 @@ And records:
 java -jar Ex4_Server_v0.0.jar case 
  
 ##  Results:
-![Test Image 3](https://github.com/liornagar799/Ex4/blob/main/UML/image.png)
+![Test Image 3](https://github.com/liornagar799/Ex4/blob/main/UML/image.png).
 # UML
 Click on the image if you want to enlarge the image.
 ![Test Image 2](https://github.com/liornagar799/Ex4/blob/main/UML/Ex4-UML.png)
